@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegionService } from 'src/services/region.service';
 
 @Component({
   selector: 'app-list-region',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListRegionComponent implements OnInit {
 
-  constructor() { }
+  regionCollection:any=[]
+  constructor(private regionService:RegionService) { }
 
   ngOnInit(): void {
+    this.regionService.getRegion().subscribe((data)=>{
+      this.regionCollection=data;
+      console.log(this.regionCollection)
+    });
   }
 
 }
