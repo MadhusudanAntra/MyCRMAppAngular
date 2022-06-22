@@ -6,6 +6,7 @@ import { RegionRoutingModule } from './region-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegionService } from 'src/services/region.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     RegionRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers:[RegionService]
 })

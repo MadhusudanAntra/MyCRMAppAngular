@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Employee } from 'src/interface/employee';
+import { EmployeeService } from 'src/services/employee.service';
 
 @Component({
   selector: 'app-edit-employee',
@@ -8,6 +10,7 @@ import { Employee } from 'src/interface/employee';
   styleUrls: ['./edit-employee.component.scss']
 })
 export class EditEmployeeComponent implements OnInit {
+  id:number=0;
   employee:Employee ={
     firstName: '',
     lastName:'',
@@ -17,30 +20,32 @@ export class EditEmployeeComponent implements OnInit {
     birthDate:new Date(),
     region:0,
     reportsTo:0,
-    titleOfCourtesy:''
-  
+    titleOfCourtesy:'',
+    regionName:'',
+    fullName:'',
+  id:0
   }
   
-  constructor() { }
+  constructor(private activatedRoute:ActivatedRoute, private empService:EmployeeService) { 
+    activatedRoute.params.subscribe(d=>{
+    this.id=  d["id"]
+    })
+  }
 
   ngOnInit(): void {
   }
  setData(ngForm:NgForm){
-  this.employee ={
-    firstName: 'Smith',
-    lastName:'Doe',
-    city:'Auror',
-    title:'Manager',
-    hireDate:new Date(),
-    birthDate:new Date(),
-    region:2,
-    reportsTo:4,
-    titleOfCourtesy:'Mr.'
-  
-  }
-  ngForm.setValue(this.employee)
+  this.empService.getEmpById(this.id).subscribe(d=>{
+    this.employee=d;
+  })
+ ngForm.setValue(this.employee)
  
 }
 editEmployee(ngForm:NgForm)
-{}
+{
+  this.employee= ngForm.value;
+  this.empService.updateEmployee(this.employee).subscribe(d=>{
+
+  });
+}
 }

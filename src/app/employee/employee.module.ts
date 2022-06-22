@@ -5,6 +5,7 @@ import { ListEmployeeComponent } from './list-employee/list-employee.component';
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { FormsModule } from '@angular/forms';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { EmployeeService } from 'src/services/employee.service';
 
 
 
@@ -18,6 +19,7 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
     CommonModule,
     EmployeeRoutingModule,
     FormsModule
-  ]
+  ],
+  providers:[EmployeeService]
 })
 export class EmployeeModule { }

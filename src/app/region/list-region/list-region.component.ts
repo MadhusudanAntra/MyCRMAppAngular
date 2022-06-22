@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Region } from 'src/interface/region';
 import { RegionService } from 'src/services/region.service';
 
 @Component({
@@ -8,14 +10,24 @@ import { RegionService } from 'src/services/region.service';
 })
 export class ListRegionComponent implements OnInit {
 
-  regionCollection:any=[]
-  constructor(private regionService:RegionService) { }
+  regionCollection:Region[]=[]
+  constructor(private regionService:RegionService, private router:Router) { }
 
   ngOnInit(): void {
+   this.getData();
+  }
+
+  getData(){
     this.regionService.getRegion().subscribe((data)=>{
       this.regionCollection=data;
-      console.log(this.regionCollection)
     });
+  }
+
+
+  deleteRegion(id:any){
+   this.regionService.deleteRegion(id).subscribe((d:any)=>{
+    this.getData();
+   });
   }
 
 }
