@@ -8,7 +8,8 @@ export const environment = {
  apiControllers:
   {
     employee:"employee",
-    region:"region"
+    region:"region",
+    accountsignup:"account/signup"
   }
  
 };

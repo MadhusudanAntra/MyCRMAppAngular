@@ -25,4 +25,8 @@ export class RegionService {
   {
     return this.httpClient.delete(this.url+id)
   }
+
+  callApiDemo(){
+    return this.httpClient.get("https://jsonplaceholder.typicode.com/posts")
+  }
 }

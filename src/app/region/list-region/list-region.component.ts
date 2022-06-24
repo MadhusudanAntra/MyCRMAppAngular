@@ -30,4 +30,12 @@ export class ListRegionComponent implements OnInit {
    });
   }
 
+
+  callApi(){
+    this.regionService.callApiDemo().subscribe(d=>{
+      console.log(d)
+    })
+  }
+
+
 }
