@@ -13,4 +13,8 @@ export class AccountService {
   signUp(singup:any):Observable<any>{
     return this.httpClient.post(environment.apiKey+environment.apiControllers.accountsignup,singup);
   }
+
+  login(loginModel:any):Observable<any>{
+    return this.httpClient.post(environment.apiKey+environment.apiControllers.accountlogin,loginModel)
+  }
 }

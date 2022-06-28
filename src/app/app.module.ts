@@ -5,18 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeModule } from './employee/employee.module';
 import { RegionModule } from './region/region.module';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from 'src/interceptors/token.interceptor';
+import { LayoutModule } from './layout/layout.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    EmployeeModule,
-    RegionModule
+    
+    FormsModule,
+    LayoutModule,
+    RouterModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

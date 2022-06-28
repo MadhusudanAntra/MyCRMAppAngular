@@ -5,8 +5,9 @@ import { ListRegionComponent } from './list-region/list-region.component';
 import { RegionRoutingModule } from './region-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegionService } from 'src/services/region.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { TokenInterceptor } from 'src/interceptors/token.interceptor';
 
 
 
@@ -22,6 +23,8 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     RouterModule
   ],
-  providers:[RegionService]
+  providers:[RegionService,
+  
+    {provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor,multi:true}]
 })
 export class RegionModule { }

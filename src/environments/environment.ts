@@ -9,7 +9,8 @@ export const environment = {
   {
     employee:"employee",
     region:"region",
-    accountsignup:"account/signup"
+    accountsignup:"account/signup",
+    accountlogin:"account/login"
   }
  
 };

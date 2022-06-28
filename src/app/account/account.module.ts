@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { SignupComponent } from './signup/signup.component';
 import { AccountRoutingModule } from './account-routing.module';
 import { RouterModule } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from 'src/services/account.service';
+import { TokenInterceptor } from 'src/interceptors/token.interceptor';
 
 
 
@@ -20,6 +21,9 @@ import { AccountService } from 'src/services/account.service';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers:[AccountService]
+  providers:[AccountService,
+  
+    {provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor,multi:true}
+  ]
 })
 export class AccountModule { }
